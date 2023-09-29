@@ -1,6 +1,6 @@
-# Tauri + Yew
+# Tauri + Sycamore
 
-This template should help get you started developing with Tauri and Yew.
+This template should help get you started developing with Tauri and Sycamore.
 
 ## Recommended IDE Setup
 

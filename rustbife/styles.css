@@ -1,5 +1,5 @@
-.logo.yew:hover {
-  filter: drop-shadow(0 0 2em #20a88a);
+.logo.sycamore:hover {
+  filter: drop-shadow(0 0 2em #f8b94c);
 }
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -19,18 +19,10 @@
 
 .container {
   margin: 0;
-  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: 0.75s;
 }
 
 .logo.tauri:hover {
@@ -70,6 +62,10 @@ button {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
+input.url-input {
+  width: 100%;
+}
+
 button {
   cursor: pointer;
 }
@@ -84,15 +80,15 @@ button:active {
 
 input,
 button {
-  outline: none;  
-}
-
-select:hover {
-  border-color: #396cd8
+  outline: none;
 }
 
 #greet-input {
   margin-right: 5px;
+}
+
+.response-area {
+  text-align: left;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -110,12 +106,8 @@ select:hover {
     color: #ffffff;
     background-color: #0f0f0f98;
   }
-
-  select {
-    background: rgba(0, 0, 155, 0.2);
-  }
-  
   button:active {
     background-color: #0f0f0f69;
   }
 }
+
