@@ -22,9 +22,9 @@ struct RequestArgs<'a> {
 
 #[component]
 pub fn App<G: Html>(cx: Scope) -> View<G> {
-    let name = create_signal(cx, String::new());
+    let url = create_signal(cx, String::new());
     let method = create_signal(cx, String::new());
-    let new_request = create_signal(cx, String::new());
+    let response = create_signal(cx, String::new());
 
     let do_request = move |e: Event| {
         e.prevent_default();
@@ -41,7 +41,7 @@ pub fn App<G: Html>(cx: Scope) -> View<G> {
                 "request",
                 to_value(&RequestArgs {
                     method: &get_method(),
-                    url: &name.get(),
+                    url: "https://pokeapi.co/api/v2/pokemon/ditto",
                 })
                 .unwrap(),
             )
@@ -49,7 +49,7 @@ pub fn App<G: Html>(cx: Scope) -> View<G> {
 
             log(&new_msg.as_string().unwrap());
 
-            new_request.set(new_msg.as_string().unwrap());
+            response.set(new_msg.as_string().unwrap());
         })
     };
 
@@ -88,14 +88,18 @@ pub fn App<G: Html>(cx: Scope) -> View<G> {
                     option(value="PUT"){"PUT"}
                     option(value="PATCH"){"PATCH"}
                 }
-                input(id="greet-input",bind:value=name,placeholder="Enter a name...")
+                input(
+                    class="url-input",
+                    id="greet-input",
+                    bind:value=url,placeholder="http://localhost:8080/v1/my-api"
+                )
                 button(type="submit") {
                     "Send"
                 }
             }
-            p {
-                b {
-                    (new_request.get())
+            p (class="response-area") {
+                b () {
+                    (response.get())
                 }
             }
         }
